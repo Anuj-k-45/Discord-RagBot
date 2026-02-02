@@ -1,0 +1,29 @@
+## Internship Overview
+The AI Internship Program is a structured training program designed to help interns build practical skills in artificial intelligence, machine learning, and software development.
+
+## Internship Duration
+The internship lasts for 12 weeks. Each week focuses on a specific learning goal, including theory, hands-on projects, and assessments.
+
+## Working Schedule
+Interns are expected to work five days a week. The daily schedule is flexible, allowing interns to manage their time effectively while meeting weekly goals.
+
+## Learning Format
+The program includes a combination of recorded video lectures, live sessions, hands-on coding exercises, and project-based learning.
+
+## Office Hours
+Office hours are conducted during the first three weeks of the internship. These sessions allow interns to ask questions, clarify doubts, and receive guidance from mentors.
+
+## Project-Based Learning
+Interns are required to complete multiple projects throughout the program. These projects are designed to reinforce concepts such as data preprocessing, model training, and deployment.
+
+## Evaluation and Feedback
+Intern performance is evaluated through assignments, quizzes, and project submissions. Feedback is provided regularly to support continuous improvement.
+
+## Certification
+Interns who successfully complete all program requirements will receive a certificate of completion at the end of the internship.
+
+## Support and Communication
+All official communication, announcements, and discussions take place through Discord. Interns are encouraged to actively participate in the community.
+
+## Code of Conduct
+Interns are expected to maintain professionalism, follow ethical guidelines, and respect fellow participants throughout the program.

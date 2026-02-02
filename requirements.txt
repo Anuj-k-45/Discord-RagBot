@@ -1,0 +1,18 @@
+python-dotenv
+
+# Vector DB & Storage
+pinecone
+pymongo
+certifi
+
+
+# Embeddings (local, stable)
+sentence-transformers
+
+# LangChain (LLM + utils)
+langchain
+langchain-groq
+langchain_text_splitters
+
+# Discord bot
+discord.py
