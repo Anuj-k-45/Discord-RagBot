@@ -4,7 +4,8 @@ python-dotenv
 pinecone
 pymongo
 certifi
-
+pypdf 
+python-docx
 
 # Embeddings (local, stable)
 sentence-transformers

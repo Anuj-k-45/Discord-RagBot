@@ -4,7 +4,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from models import embedding_model, index, llm
 
 
-def retrieve_context(query: str, top_k: int = 4) -> str:
+def retrieve_context(query: str, top_k: int = 8) -> str:
     query_embedding = embedding_model.encode(
         query,
         normalize_embeddings=True
@@ -28,15 +28,36 @@ def chat_model(user_question: str) -> str:
     messages = [
         SystemMessage(
             content=(
-                "You are an AI assistant for AI interns.\n"
-                "Answer ONLY using the provided context.\n"
-                "If the answer is not present, say:\n"
-                "'I don't have that information in my knowledge base.'"
+                "You are a friendly and helpful AI Internship Assistant on Discord.\n\n"
+
+                "Your primary role is to answer questions for interns using ONLY the provided knowledge base context.\n"
+                "When answering knowledge-related questions:\n"
+                "- Use ONLY the information present in the context.\n"
+                "- Do NOT mention phrases like 'based on the provided context' or 'according to the document'.\n"
+                "- Respond naturally, as if you already know the information.\n"
+                "- Be clear, concise, and friendly.\n\n"
+
+                "If the answer to a knowledge-related question is NOT found in the context, respond politely with:\n"
+                "'I don’t have that information in my knowledge base right now.'\n\n"
+
+                "For casual or conversational messages (such as greetings, small talk, or friendly remarks like "
+                "'hi', 'hello', 'hey', 'how are you', 'good morning'):\n"
+                "- Respond warmly and naturally.\n"
+                "- Do NOT say that the information is missing from the knowledge base.\n"
+                "- Keep responses short and friendly.\n\n"
+
+                "You must NEVER:\n"
+                "- Make up information.\n"
+                "- Use external knowledge.\n"
+                "- Answer questions beyond the knowledge base.\n\n"
+
+                "Your tone should feel like a real, approachable intern support assistant on Discord."
             )
         ),
         HumanMessage(
-            content=f"Context:\n{context}\n\nQuestion:\n{user_question}"
+            content=f"Context:\n{context}\n\nUser message:\n{user_question}"
         )
     ]
+
 
     return llm.invoke(messages).content.strip()
