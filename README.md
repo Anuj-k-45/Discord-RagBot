@@ -40,7 +40,7 @@ User Question
 
 ### System Architecture Diagram
 
-![RAG Bot Architecture Diagram](workflow.png)
+![RAG Bot Architecture Diagram](architecture-diagram.png)
 
 _Visual representation of the complete data flow from document ingestion through response generation_
 
