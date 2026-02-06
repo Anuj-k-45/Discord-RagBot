@@ -1,8 +1,14 @@
 from typing import List
+import asyncio
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from models import embedding_model, index, llm
 
+from chat_history import get_recent_history, store_message
+
+from config import (
+    ENABLE_CHAT_HISTORY
+)
 
 def retrieve_context(query: str, top_k: int = 8) -> str:
     query_embedding = embedding_model.encode(
@@ -22,7 +28,12 @@ def retrieve_context(query: str, top_k: int = 8) -> str:
     )
 
 
-def chat_model(user_question: str) -> str:
+async def chat_model(user_id: str, user_question: str) -> str:
+    if ENABLE_CHAT_HISTORY:
+        history = await asyncio.to_thread(get_recent_history, user_id)
+    else:
+        history = ""
+
     context = retrieve_context(user_question)
 
     messages = [
@@ -51,7 +62,8 @@ def chat_model(user_question: str) -> str:
                 "- Use external knowledge.\n"
                 "- Answer questions beyond the knowledge base.\n\n"
 
-                "Your tone should feel like a real, approachable intern support assistant on Discord."
+                "Your tone should feel like a real, approachable intern support assistant on Discord.\n\n" \
+                "Note that the final answer should be in less than 2000 characters"
             )
         ),
         HumanMessage(
@@ -59,5 +71,22 @@ def chat_model(user_question: str) -> str:
         )
     ]
 
+    if history and ENABLE_CHAT_HISTORY:
+        messages.append(
+            HumanMessage(content=f"Conversation so far:\n{history}")
+        )
 
-    return llm.invoke(messages).content.strip()
+    messages.append(
+        HumanMessage(
+            content=f"Knowledge Base Context:\n{context}\n\nUser Question:\n{user_question}"
+        )
+    )
+
+    response = llm.invoke(messages).content.strip()
+
+    # Store messages asynchronously
+    if ENABLE_CHAT_HISTORY:
+        await asyncio.to_thread(store_message, user_id, "user", user_question)
+        await asyncio.to_thread(store_message, user_id, "assistant", response)
+
+    return response

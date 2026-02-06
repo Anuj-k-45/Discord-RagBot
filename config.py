@@ -32,6 +32,8 @@ PINECONE_INDEX_NAME = "rag-bot-v2"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 DATA_PATH = "data"
+ENABLE_CHAT_HISTORY = False
+
 
 # ===============================
 # SAFETY CHECKS

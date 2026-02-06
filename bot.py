@@ -24,7 +24,10 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    response = chat_model(message.content)
+    user_id = str(message.author.id)
+
+    response = await chat_model(user_id, message.content)
     await message.channel.send(response)
+
 
 client.run(BOT_TOKEN)
