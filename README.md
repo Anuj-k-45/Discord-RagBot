@@ -479,17 +479,6 @@ GitHub: [Anuj-k-45](https://github.com/Anuj-k-45)
 
 ---
 
-## 📞 Support & Troubleshooting
-
-For issues or questions:
-
-1. Check the [Troubleshooting](#troubleshooting) section
-2. Review environment variable configuration
-3. Check API service status
-4. Review logs for error messages
-
----
-
 ## 📚 Additional Resources
 
 - [Discord.py Documentation](https://discordpy.readthedocs.io/)
