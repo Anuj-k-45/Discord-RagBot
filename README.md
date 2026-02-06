@@ -38,6 +38,12 @@ User Question
     └── Embeddings Stored (Pinecone)
 ```
 
+### System Architecture Diagram
+
+![RAG Bot Architecture Diagram](workflow.png)
+
+_Visual representation of the complete data flow from document ingestion through response generation_
+
 ### Key Components
 
 | Component               | Technology                           | Purpose                                           |
@@ -211,19 +217,21 @@ Bot: The internship typically lasts 8-12 weeks...
 
 ```
 Discord-RagBot/
-├── bot.py                    # Main Discord bot entry point
-├── config.py                 # Configuration & environment variables
-├── models.py                 # Initialize embedding model, Pinecone, and LLM
+├── bot.py                   # Main Discord bot entry point
+├── config.py                # Configuration & environment variables
+├── models.py                # Initialize embedding model, Pinecone, and LLM
 ├── rag_pipeline.py          # Core RAG pipeline logic
 ├── ingestion.py             # Document loading and ingestion
 ├── chat_history.py          # MongoDB chat history management
 ├── requirements.txt         # Python dependencies
 ├── Dockerfile               # Docker configuration
+├── README.md                # Project documentation
 ├── .env                     # Environment variables (create this)
 ├── data/                    # Knowledge base documents
 │   └── program_handbook.txt
+├── architecture-diagram.png #architecture diagram
 ├── newVenv/                 # Virtual environment (after setup)
-└── __pycache__/            # Python cache files
+└── __pycache__/             # Python cache files
 ```
 
 ### File Descriptions
